@@ -1,0 +1,29 @@
+.header {
+   background-color: var(--neutral-accent);
+   padding: 8px 0px;
+}
+
+.header .container {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 16px;
+}
+
+.header__logo {
+   display: block;
+   background-color: var(--secondary);
+   width: 64px;
+   height: 64px;
+}
+
+.header__divider {
+    display: block;
+    width: 2px;
+    height: 50px;
+    background-color: var(--primary-text);
+}
+
+.header h2 {
+    color: var(--primary-text);
+}

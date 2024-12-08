@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>TaskBoard - Selecione o board</title>
+      <!-- Google fonts inicio -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+         rel="stylesheet"
+      />
+      <!-- Google fonts final -->
+      <link rel="stylesheet" href="./styles/global.css" />
+      <link rel="stylesheet" href="./styles/header.css" />
+      <link rel="stylesheet" href="./styles/boards.css" />
+      <link rel="stylesheet" href="./styles/modal.css" />
+   </head>
+   <body class="light">
+      <header class="header">
+         <div class="container">
+            <span class="header__logo"></span>
+            <span class="header__divider"></span>
+            <h2 class="">TaskBoard</h2>
+         </div>
+      </header>
+      <nav class="boards-nav">
+         <div class="container">
+            <div class="boards-nav__board-nav">
+               <select
+                  name="boards-select"
+                  id="boards-select"
+                  class="boards-nav__select"
+               >
+                  <option value="000">Selecione...</option>
+               </select>
+               <button
+                  class="boards-nav__board-nav__add-button"
+                  id="create-board"
+               >
+                  Adicionar Board
+               </button>
+               <button
+                  class="boards-nav__board-nav__delete-button"
+                  id="delete-board"
+                  disabled="true"
+               >
+                  Deletar board
+               </button>
+            </div>
+            <div class="boards-nav__user-nav">
+               <p id="user-email">Carregando</p>
+               <span class="boards-nav__user-nav__divider"></span>
+               <button class="boards-nav__user-nav__button" id="logout-button">
+                  Sair
+               </button>
+               <div class="theme-switch-wrapper">
+                  <label class="theme-switch" for="theme-toggle">
+                     <input type="checkbox" id="theme-toggle" />
+                     <span class="slider"></span>
+                  </label>
+                  <p id="theme-text">Claro</p>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <main class="board">
+         <div class="container" id="content-container">
+            <div class="board-no-content">
+               <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="64"
+                  height="64"
+                  fill="#000000"
+                  viewBox="0 0 256 256"
+               >
+                  <path
+                     d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"
+                  ></path>
+               </svg>
+               <h3>Ops, você ainda não selecionou nenhum board!</h3>
+               <p>
+                  Use o menu acima para selecionar o board que você deseja
+                  visualizar.
+               </p>
+            </div>
+         </div>
+      </main>
+      <div class="add__board__modal" id="add__board__modal">
+         <div class="add_board_modal_content">
+            <div class="add-board-modal__title">
+               <h2>Adicionar Board</h2>
+               <span class="close_modal" id="close-modal">&times;</span>
+            </div>
+            <form class="add-board-modal__form">
+               <fieldset>
+                  <label for="board-name">Nome do board</label>
+                  <input type="text" name="board-name" id="board-name" />
+               </fieldset>
+               <fieldset>
+                  <label for="board-description">Descrição</label>
+                  <input
+                     type="text"
+                     name="board-description"
+                     id="board-description"
+                  />
+               </fieldset>
+            </form>
+            <button class="add-board-modal__button" id="save-modal-button">
+               Adicionar
+            </button>
+         </div>
+      </div>
+      <div class="delete-board-modal" id="delete-board-modal">
+         <div class="delete-board-modal__content">
+            <div class="delete-board-modal__title">
+               <h2>Deletar</h2>
+               <span class="close_modal" id="close-delete-modal">&times;</span>
+            </div>
+            <h3>Tem certeza que deseja deletar esse board?</h3>
+            <p>Esse processo não pode ser desfeito posteriormente.</p>
+            <div class="delete-board-modal__actions">
+               <button
+                  class="cancel-delete-board-modal__button"
+                  id="cancel-delete-modal-button"
+               >
+                  Cancelar
+               </button>
+               <button
+                  class="delete-board-modal__button"
+                  id="delete-modal-button"
+               >
+                  Deletar
+               </button>
+            </div>
+         </div>
+      </div>
+      <div class="add-column-modal" id="add-column-modal">
+         <div class="add-column-modal__content">
+            <div class="add-column-modal__title">
+               <h2>Adicionar coluna</h2>
+               <span class="close_modal" id="close-add-column-modal"
+                  >&times;</span
+               >
+            </div>
+            <form class="add-column-modal__form">
+               <fieldset>
+                  <label for="column-name">Nome da coluna</label>
+                  <input type="text" name="column-name" id="column-name" />
+               </fieldset>
+            </form>
+            <button
+               class="add-column-modal__button"
+               id="save-column-modal-button"
+            >
+               Adicionar
+            </button>
+         </div>
+      </div>
+      <div class="delete-column-modal" id="delete-column-modal">
+         <div class="delete-column-modal__content">
+            <div class="delete-column-modal__title">
+               <h2>Deletar</h2>
+               <span class="close_modal" id="close-delete-column-modal"
+                  >&times;</span
+               >
+            </div>
+            <h3>Tem certeza que deseja deletar essa coluna?</h3>
+            <p>Esse processo não pode ser desfeito posteriormente.</p>
+            <div class="delete-column-modal__actions">
+               <button
+                  class="cancel-delete-column-modal__button"
+                  id="cancel-delete-column-button"
+               >
+                  Cancelar
+               </button>
+               <button
+                  class="delete-column-modal__button"
+                  id="delete-column-modal-button"
+               >
+                  Deletar
+               </button>
+            </div>
+         </div>
+      </div>
+      <div class="add-task-modal" id="add-task-modal">
+         <div class="add-task-modal__content">
+            <div class="add-task-modal__title">
+               <h2>Adicionar Task</h2>
+               <span class="close_modal" id="close-modal-task">&times;</span>
+            </div>
+            <form class="add-task-modal__form">
+               <fieldset>
+                  <label for="task-title">Título</label>
+                  <input type="text" name="task-title" id="task-title" />
+               </fieldset>
+               <fieldset>
+                  <label for="task-description">Descrição</label>
+                  <input
+                     type="text"
+                     name="task-description"
+                     id="task-description"
+                  />
+               </fieldset>
+            </form>
+            <button class="add-task-modal__button" id="save-task-modal-button">
+               Adicionar
+            </button>
+         </div>
+      </div>
+      <div class="edit-task-modal" id="edit-task-modal">
+         <div class="edit-task-modal__content">
+            <div class="edit-task-modal__title">
+               <h2>Editar Task</h2>
+               <span class="close_modal" id="close-modal-edit-task"
+                  >&times;</span
+               >
+            </div>
+            <form class="edit-task-modal__form">
+               <fieldset>
+                  <label for="task-edit-title">Título</label>
+                  <input
+                     type="text"
+                     name="task-edit-title"
+                     id="task-edit-title"
+                  />
+               </fieldset>
+               <fieldset>
+                  <label for="task-edit-description">Descrição</label>
+                  <input
+                     type="text"
+                     name="task-edit-description"
+                     id="task-edit-description"
+                  />
+               </fieldset>
+            </form>
+            <button
+               class="edit-task-modal__button"
+               id="save-task-edit-modal-button"
+            >
+               Salvar
+            </button>
+         </div>
+      </div>
+      <div class="delete-task-modal" id="delete-task-modal">
+         <div class="delete-task-modal__content">
+            <div class="delete-task-modal__title">
+               <h2>Deletar</h2>
+               <span class="close_modal" id="close-delete-task-modal"
+                  >&times;</span
+               >
+            </div>
+            <h3>Tem certeza que deseja deletar essa tarefa?</h3>
+            <p>Esse processo não pode ser desfeito posteriormente.</p>
+            <div class="delete-task-modal__actions">
+               <button
+                  class="cancel-delete-task-modal__button"
+                  id="delete-cancel-modal-button"
+               >
+                  Cancelar
+               </button>
+               <button
+                  class="delete-task-modal__button"
+                  id="delete-task-modal-button"
+               >
+                  Deletar
+               </button>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="./scripts/load-user-config.js"></script>
+   <script src="./scripts/load-avaiables-boards.js"></script>
+   <script src="./scripts/load-selected-board-info.js"></script>
+   <script src="./scripts/theme-switcher.js"></script>
+   <script src="./scripts/authentication.js"></script>
+   <script src="./scripts/create-board.js"></script>
+   <script src="./scripts/delete-board.js"></script>
+   <script src="./scripts/create-column.js"></script>
+   <script src="./scripts/delete-column.js"></script>
+   <script src="./scripts/create-task.js"></script>
+   <script src="./scripts/edit-task.js"></script>
+   <script src="./scripts/delete-task.js"></script>
+</html>

@@ -1,0 +1,345 @@
+body {
+   background-color: var(--neutral);
+   min-width: 100vw;
+   min-height: 100vh;
+}
+
+.boards-nav {
+   background-color: var(--primary);
+   padding: 8px 0px;
+}
+
+.boards-nav .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.boards-nav__board-nav {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+}
+
+.boards-nav__select {
+   padding: 8px;
+   border-radius: 4px;
+   border: 1px solid var(--tertiary);
+   background-color: var(--tertiary);
+   color: var(--primary-text);
+   min-width: 300px;
+}
+
+.boards-nav__board-nav__add-button {
+   padding: 8px 16px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+}
+
+.boards-nav__board-nav__delete-button {
+   padding: 8px 16px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--tertiary);
+   color: var(--primary-text);
+   cursor: pointer;
+}
+
+.boards-nav__board-nav__delete-button:disabled {
+   background-color: var(--tertiary);
+   color: var(--tertiary-text);
+   cursor: not-allowed;
+}
+
+.boards-nav__user-nav {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+}
+
+.boards-nav__user-nav p {
+   color: var(--secondary-text);
+}
+
+.boards-nav__user-nav__divider {
+   display: block;
+   width: 2px;
+   height: 50px;
+   background-color: var(--primary-text);
+}
+
+.boards-nav__user-nav__button {
+   padding: 8px 16px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+}
+
+.boards-nav .theme-switch-wrapper {
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   flex-direction: column;
+}
+
+.boards-nav .theme-switch-wrapper p {
+   color: var(--secondary-text);
+   min-width: 6ch;
+   text-align: center;
+}
+
+.boards-nav .theme-switch {
+   position: relative;
+   display: inline-block;
+   width: 50px;
+   height: 24px;
+}
+
+.boards-nav .theme-switch input {
+   opacity: 0;
+   width: 0;
+   height: 0;
+}
+
+.boards-nav .slider {
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #ccc;
+   transition: 0.4s;
+   border-radius: 24px;
+}
+
+.boards-nav .slider:before {
+   position: absolute;
+   content: "";
+   height: 18px;
+   width: 18px;
+   left: 3px;
+   bottom: 3px;
+   background-color: white;
+   transition: 0.4s;
+   border-radius: 50%;
+}
+
+.boards-nav input:checked + .slider {
+   background-color: #4caf50;
+}
+
+.boards-nav input:checked + .slider:before {
+   transform: translateX(26px);
+}
+
+.board {
+   background-color: var(--primary-accent);
+}
+
+.board .container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: calc(100vh - 164px);
+}
+
+.board-no-content {
+   padding: 16px;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   align-items: center;
+}
+
+.board-no-content svg {
+   fill: var(--primary-text);
+}
+
+.board-no-content h3 {
+   color: var(--primary-text);
+}
+
+.board-no-content p {
+   color: var(--tertiary-text);
+   font-size: 13px;
+}
+
+.board-content {
+   display: flex;
+   gap: 64px;
+   min-width: 100%;
+   max-width: 100%;
+   overflow: auto;
+   padding-bottom: 32px;
+}
+
+.board-content::-webkit-scrollbar {
+   width: 8px;
+}
+
+.board-content::-webkit-scrollbar-thumb {
+   background-color: var(--primary);
+   border-radius: 8px;
+}
+
+.board-content::-webkit-scrollbar-track {
+   background-color: var(--primary-accent);
+   border-radius: 8px;
+}
+
+.board-content::-webkit-scrollbar-thumb:hover {
+   background-color: var(--secondary);
+}
+
+.board-content::-webkit-scrollbar-thumb:active {
+   background-color: var(--secondary);
+}
+
+.board-content::-webkit-scrollbar-track-piece {
+   background-color: var(--neutral);
+   border-radius: 8px;
+}
+
+.board-content__column {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   background-color: var(--neutral-accent);
+   min-width: 300px;
+   max-width: 300px;
+   min-height: 500px;
+   max-height: 500px;
+   overflow-y: auto;
+   padding: 16px;
+   border-radius: 8px;
+}
+
+.board-content__column::-webkit-scrollbar {
+   width: 8px;
+}
+
+.board-content__column::-webkit-scrollbar-thumb {
+   background-color: var(--primary);
+   border-radius: 8px;
+}
+
+.board-content__column::-webkit-scrollbar-track {
+   background-color: var(--primary-accent);
+   border-radius: 8px;
+}
+
+.board-content__column::-webkit-scrollbar-thumb:hover {
+   background-color: var(--secondary);
+}
+
+.board-content__column::-webkit-scrollbar-thumb:active {
+   background-color: var(--secondary);
+}
+
+.board-content__column::-webkit-scrollbar-track-piece {
+   background-color: var(--neutral);
+   border-radius: 8px;
+}
+
+.board-content__column-title {
+   color: var(--primary-text);
+   font-size: 13px;
+}
+
+.board-content__column-button {
+   padding: 8px 16px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+   margin-bottom: 8px;
+   display: none;
+}
+
+.board-content__column-title:hover .board-content__column-button {
+   display: block;
+}
+
+.board-content__column__task {
+   display: flex;
+   flex-direction: column;
+   gap: 2px;
+   border: 1px solid var(--primary-text);
+   padding: 8px;
+   border-radius: 4px;
+}
+
+.board-content__column__task-title {
+   color: var(--primary-text);
+   font-size: 14px;
+   line-height: 0.7;
+}
+
+.board-content__column__task-description {
+   color: var(--tertiary-text);
+   font-size: 12px;
+}
+
+.board-content__column__actions {
+   display: none;
+   gap: 8px;
+}
+
+.board-content__column__task:hover .board-content__column__actions {
+   display: flex;
+}
+
+.board-content__column__actions button {
+   margin-top: 4px;
+   padding: 4px 8px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+}
+
+.add-column__column {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   min-width: 300px;
+   max-width: 300px;
+   min-height: 500px;
+   padding: 0px 16px;
+   border-radius: 8px;
+}
+
+.add-column__column button {
+   padding: 8px 16px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+}
+
+.add-task__button {
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+   border-radius: 4px;
+}
+
+.add-task__button button {
+   padding: 8px 16px;
+   border-radius: 4px;
+   border: 0;
+   background-color: var(--secondary);
+   color: var(--secondary-text);
+   cursor: pointer;
+}
